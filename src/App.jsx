@@ -1,8 +1,8 @@
-﻿import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    GLOBAL STYLES (injected via <style>)
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 const GLOBAL_CSS = `
 :root {
   --bg: #0f0f13;
@@ -65,13 +65,13 @@ html, body, #root {
 }
 `;
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    API KEY INPUT PROMPT COMPONENT
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    PROMPTS
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 const SYSTEM_PROMPT = (resumeText) => `You are an expert AI Resume & Interview Coach with 15+ years of experience in talent acquisition, career coaching, and technical hiring at top-tier companies including FAANG, startups, and consulting firms.
 
 Your job is to help the user:
@@ -84,7 +84,7 @@ IMPORTANT RULES:
 - Always reference SPECIFIC content from the resume below
 - Never make up skills, roles, or experience not in the resume
 - Use clear sections with headers for readability
-- Be honest and constructive ΓÇö not generic
+- Be honest and constructive — not generic
 
 RESUME CONTENT:
 ${resumeText}`;
@@ -175,7 +175,7 @@ const IMPROVE_PROMPT = `Rewrite the 6 weakest parts of my resume. For each one, 
 IMPROVEMENT 1:
 ORIGINAL: [quote the exact original text]
 IMPROVED: [your rewritten version]
-REASON: [why this is stronger ΓÇö keywords, quantification, clarity]
+REASON: [why this is stronger — keywords, quantification, clarity]
 
 IMPROVEMENT 2:
 ORIGINAL: [exact original]
@@ -214,9 +214,9 @@ TAILORING RECOMMENDATIONS:
 COVER LETTER HOOK:
 [2 strong opening sentences for a cover letter targeting this role]`;
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    PARSING HELPERS
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 // Strip all markdown formatting (bold, headers, etc.) for reliable parsing
 function stripMarkdown(text) {
   return text
@@ -253,7 +253,7 @@ function parseSection(text, sectionName, nextSections) {
   const regex = new RegExp(`${escapedName}[:\\s]*\\n([\\s\\S]*?)(?=${nextPart}|$)`, 'i');
   const match = clean.match(regex);
   if (match) {
-    return match[1].trim().split('\n').filter(l => l.trim()).map(l => l.replace(/^[-ΓÇó*\d.)\s]+/, '').trim()).filter(Boolean);
+    return match[1].trim().split('\n').filter(l => l.trim()).map(l => l.replace(/^[-•*\d.)\s]+/, '').trim()).filter(Boolean);
   }
   return [];
 }
@@ -297,9 +297,9 @@ function parseQuestions(text) {
   return result;
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
-   API FUNCTION (Groq ΓÇö free, fast, Llama 3.3 70B)
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+/* ─────────────────────────────────────────────
+   API FUNCTION (Groq — free, fast, Llama 3.3 70B)
+───────────────────────────────────────────── */
 async function callAI(apiKey, systemPrompt, messages) {
   const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
@@ -322,9 +322,9 @@ async function callAI(apiKey, systemPrompt, messages) {
   return data.choices[0].message.content;
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    SMALL UI COMPONENTS
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 function Spinner({ size = 20, color }) {
   return (
     <span style={{
@@ -365,11 +365,11 @@ function ErrorBanner({ message, onDismiss }) {
       fontSize: 14, zIndex: 9999, maxWidth: 500, animation: 'fadeIn 0.3s ease',
       display: 'flex', alignItems: 'center', gap: 12
     }}>
-      <span style={{ flex: 1 }}>ΓÜá {message}</span>
+      <span style={{ flex: 1 }}>⚠ {message}</span>
       <button onClick={onDismiss} style={{
         background: 'none', border: 'none', color: 'var(--red)',
         cursor: 'pointer', fontSize: 18, lineHeight: 1
-      }}>Γ£ò</button>
+      }}>✖</button>
     </div>
   );
 }
@@ -396,21 +396,21 @@ function ScoreRing({ score, size = 140 }) {
         position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center'
       }}>
-        <span style={{ fontSize: 36, fontWeight: 800, color }}>{score ?? 'ΓÇô'}</span>
+        <span style={{ fontSize: 36, fontWeight: 800, color }}>{score ?? '–'}</span>
         <span style={{ fontSize: 13, color: 'var(--text2)' }}>/10</span>
       </div>
     </div>
   );
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    NAVBAR
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 const NAV_ITEMS = [
-  { id: 'analysis', label: 'Analysis', icon: '≡ƒôè' },
-  { id: 'questions', label: 'Questions', icon: 'Γ¥ô' },
-  { id: 'interview', label: 'Interview', icon: '≡ƒÄñ' },
-  { id: 'improve', label: 'Improve', icon: 'Γ£¿' },
+  { id: 'analysis', label: 'Analysis', icon: '📈' },
+  { id: 'questions', label: 'Questions', icon: '✔' },
+  { id: 'interview', label: 'Interview', icon: '🎯' },
+  { id: 'improve', label: 'Improve', icon: '✿' },
 ];
 
 function Navbar({ currentScreen, setCurrentScreen, hasResume }) {
@@ -430,7 +430,7 @@ function Navbar({ currentScreen, setCurrentScreen, hasResume }) {
           background: 'linear-gradient(135deg, var(--accent), var(--accent2))',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: 16
-        }}>≡ƒÜÇ</span>
+        }}>🚀</span>
         <span style={{ fontWeight: 700, fontSize: 17, letterSpacing: '-0.3px' }}>
           ResumeAI
         </span>
@@ -461,9 +461,9 @@ function Navbar({ currentScreen, setCurrentScreen, hasResume }) {
   );
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    SCREEN 1: UPLOAD
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName, setFileName, apiKey, setApiKey }) {
   const [dragActive, setDragActive] = useState(false);
   const fileRef = useRef();
@@ -512,7 +512,7 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
           width: 120, height: 120, borderRadius: '50%', margin: '0 auto 32px',
           background: 'radial-gradient(circle, rgba(124,106,247,0.25) 0%, transparent 70%)',
           display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48
-        }}>≡ƒÜÇ</div>
+        }}>🚀</div>
 
         <h1 style={{
           fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 800,
@@ -526,7 +526,7 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
           fontSize: 16, color: 'var(--text2)', lineHeight: 1.6, marginBottom: 36, maxWidth: 440,
           margin: '0 auto 36px'
         }}>
-          Upload your resume. Get brutally honest feedback, interview prep, and a rewrite ΓÇö powered by AI.
+          Upload your resume. Get brutally honest feedback, interview prep, and a rewrite — powered by AI.
         </p>
 
         {/* API Key Input */}
@@ -537,7 +537,7 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
             borderRadius: 'var(--radius)', padding: '0 16px',
             transition: 'border-color 0.2s'
           }}>
-            <span style={{ fontSize: 16, opacity: 0.5 }}>≡ƒöæ</span>
+            <span style={{ fontSize: 16, opacity: 0.5 }}>🔑</span>
             <input
               type="password"
               placeholder="Enter your Groq API key"
@@ -551,7 +551,7 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
             />
           </div>
           <p style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6, textAlign: 'left' }}>
-            Free key from <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>console.groq.com/keys</a> ┬╖ Never stored on any server.
+            Free key from <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>console.groq.com/keys</a> · Never stored on any server.
           </p>
         </div>
 
@@ -580,10 +580,10 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
                 background: 'var(--green-bg)', display: 'flex',
                 alignItems: 'center', justifyContent: 'center',
                 margin: '0 auto 12px', fontSize: 22
-              }}>Γ£ô</div>
+              }}>✔</div>
               <p style={{ fontWeight: 600, fontSize: 15 }}>{fileName}</p>
               <p style={{ color: 'var(--green)', fontSize: 13, marginTop: 4 }}>
-                Resume loaded ┬╖ {resumeText.split(/\s+/).length} words
+                Resume loaded · {resumeText.split(/\s+/).length} words
               </p>
             </div>
           ) : (
@@ -593,7 +593,7 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
                 background: 'rgba(124,106,247,0.1)', display: 'flex',
                 alignItems: 'center', justifyContent: 'center',
                 margin: '0 auto 12px', fontSize: 22
-              }}>≡ƒôä</div>
+              }}>📄</div>
               <p style={{ fontWeight: 500, fontSize: 15, marginBottom: 4 }}>
                 Drag & drop your resume here
               </p>
@@ -625,16 +625,16 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
             <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
               <Spinner size={18} color="#fff" /> Analyzing your resume...
             </span>
-          ) : 'Analyze My Resume ΓåÆ'}
+          ) : 'Analyze My Resume →'}
         </button>
       </div>
     </div>
   );
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    SCREEN 2: ANALYSIS
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 function AnalysisScreen({ analysisText, onGenQuestions, onStartInterview, onImprove, onTailor,
   loadingQ, loadingI, loadingImp }) {
   const [activeTab, setActiveTab] = useState(0);
@@ -745,10 +745,10 @@ function AnalysisScreen({ analysisText, onGenQuestions, onStartInterview, onImpr
         display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12
       }}>
         {[
-          { label: 'Interview Questions', icon: 'Γ¥ô', onClick: onGenQuestions, loading: loadingQ },
-          { label: 'Mock Interview', icon: '≡ƒÄñ', onClick: onStartInterview, loading: loadingI },
-          { label: 'Improve Resume', icon: 'Γ£¿', onClick: onImprove, loading: loadingImp },
-          { label: 'Tailor for a Job', icon: '≡ƒÄ»', onClick: onTailor, loading: false },
+          { label: 'Interview Questions', icon: '✔', onClick: onGenQuestions, loading: loadingQ },
+          { label: 'Mock Interview', icon: '🎯', onClick: onStartInterview, loading: loadingI },
+          { label: 'Improve Resume', icon: '✿', onClick: onImprove, loading: loadingImp },
+          { label: 'Tailor for a Job', icon: '🎻', onClick: onTailor, loading: false },
         ].map((btn, i) => (
           <button key={i} onClick={btn.onClick} disabled={btn.loading}
             style={{
@@ -772,9 +772,9 @@ function AnalysisScreen({ analysisText, onGenQuestions, onStartInterview, onImpr
   );
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    SCREEN 3: QUESTIONS
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 function QuestionsScreen({ questionsText, onRegenerate, onPractice, loading }) {
   const [expanded, setExpanded] = useState({});
   const [expandedQ, setExpandedQ] = useState({});
@@ -783,11 +783,11 @@ function QuestionsScreen({ questionsText, onRegenerate, onPractice, loading }) {
   const categories = Object.keys(parsed);
 
   const categoryIcons = {
-    'BEHAVIORAL QUESTIONS': '≡ƒÆ¼',
-    'TECHNICAL QUESTIONS': 'ΓÜÖ∩╕Å',
-    'SITUATIONAL QUESTIONS': '≡ƒº⌐',
-    'RESUME DEEP-DIVE QUESTIONS': '≡ƒöì',
-    'CULTURE FIT QUESTIONS': '≡ƒñ¥'
+    'BEHAVIORAL QUESTIONS': '🧠',
+    'TECHNICAL QUESTIONS': '⚙️',
+    'SITUATIONAL QUESTIONS': '🏃',
+    'RESUME DEEP-DIVE QUESTIONS': '🔎',
+    'CULTURE FIT QUESTIONS': '🌍'
   };
 
   const toggleCat = (cat) => setExpanded(p => ({ ...p, [cat]: !p[cat] }));
@@ -814,7 +814,7 @@ function QuestionsScreen({ questionsText, onRegenerate, onPractice, loading }) {
           background: 'var(--bg2)', border: '1px solid var(--border)',
           borderRadius: 'var(--radius-sm)', padding: '0 14px'
         }}>
-          <span style={{ fontSize: 14, opacity: 0.5 }}>≡ƒÄ»</span>
+          <span style={{ fontSize: 14, opacity: 0.5 }}>🎻</span>
           <input
             placeholder="Target role (e.g. Senior Frontend Engineer)"
             value={role} onChange={e => setRole(e.target.value)}
@@ -850,7 +850,7 @@ function QuestionsScreen({ questionsText, onRegenerate, onPractice, loading }) {
             justifyContent: 'space-between'
           }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <span style={{ fontSize: 18 }}>{categoryIcons[cat] || '≡ƒôï'}</span>
+              <span style={{ fontSize: 18 }}>{categoryIcons[cat] || '📏'}</span>
               <span style={{ fontWeight: 600, fontSize: 15 }}>
                 {cat.replace('QUESTIONS', '').trim()}
               </span>
@@ -864,7 +864,7 @@ function QuestionsScreen({ questionsText, onRegenerate, onPractice, loading }) {
             <span style={{
               transform: expanded[cat] ? 'rotate(180deg)' : 'rotate(0)',
               transition: 'transform 0.2s', fontSize: 12, color: 'var(--text3)'
-            }}>Γû╝</span>
+            }}>▼</span>
           </button>
 
           {expanded[cat] && (
@@ -905,7 +905,7 @@ function QuestionsScreen({ questionsText, onRegenerate, onPractice, loading }) {
                           fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap',
                           fontFamily: 'inherit'
                         }}>
-                        Practice ΓåÆ
+                        Practice →
                       </button>
                     </div>
                   </div>
@@ -928,9 +928,9 @@ function QuestionsScreen({ questionsText, onRegenerate, onPractice, loading }) {
   );
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    SCREEN 4: MOCK INTERVIEW
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 function InterviewScreen({ apiKey, resumeText, practiceQuestion }) {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
@@ -1042,7 +1042,7 @@ function InterviewScreen({ apiKey, resumeText, practiceQuestion }) {
         display: 'flex', alignItems: 'center', gap: 12, background: 'var(--bg2)'
       }}>
         <span style={{ fontSize: 13, color: 'var(--text2)', fontWeight: 500 }}>
-          {interviewDone ? 'Γ£à Interview Complete' : `Question ${Math.min(questionCount + 1, 5)} of 5`}
+          {interviewDone ? '✅ Interview Complete' : `Question ${Math.min(questionCount + 1, 5)} of 5`}
         </span>
         <div style={{
           flex: 1, height: 4, background: 'var(--bg3)', borderRadius: 2, overflow: 'hidden'
@@ -1144,7 +1144,7 @@ function InterviewScreen({ apiKey, resumeText, practiceQuestion }) {
               opacity: (!userInput.trim() || loading) ? 0.5 : 1,
               fontFamily: 'inherit', whiteSpace: 'nowrap'
             }}>
-            Send Γåù
+            Send ↑
           </button>
         </div>
       ) : (
@@ -1153,7 +1153,7 @@ function InterviewScreen({ apiKey, resumeText, practiceQuestion }) {
           background: 'var(--bg2)', textAlign: 'center'
         }}>
           <p style={{ color: 'var(--green)', fontWeight: 600, marginBottom: 4 }}>
-            ≡ƒÄë Interview Complete!
+            🎉 Interview Complete!
           </p>
           <p style={{ color: 'var(--text3)', fontSize: 13 }}>
             Review the feedback above for your performance summary.
@@ -1164,9 +1164,9 @@ function InterviewScreen({ apiKey, resumeText, practiceQuestion }) {
   );
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    SCREEN 5: IMPROVE
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 function ImproveScreen({ improveText }) {
   const [toast, setToast] = useState('');
   const improvements = parseImprovements(improveText);
@@ -1226,7 +1226,7 @@ function ImproveScreen({ improveText }) {
                 borderRadius: 'var(--radius-sm)', fontSize: 12,
                 fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit'
               }}>
-              Copy improved Γåù
+              Copy improved ↑
             </button>
           </div>
 
@@ -1290,7 +1290,7 @@ function ImproveScreen({ improveText }) {
           onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; }}
           onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; }}
         >
-          ≡ƒôÑ Download all improvements as .txt
+          📥 Download all improvements as .txt
         </button>
       )}
 
@@ -1299,9 +1299,9 @@ function ImproveScreen({ improveText }) {
   );
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    TAILOR MODAL
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 function TailorModal({ onClose, onSubmit, loading, tailorResult }) {
   const [jd, setJd] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -1368,11 +1368,11 @@ function TailorModal({ onClose, onSubmit, loading, tailorResult }) {
           padding: '20px 24px', borderBottom: '1px solid var(--border)',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center'
         }}>
-          <h3 style={{ fontSize: 18, fontWeight: 700 }}>≡ƒÄ» Tailor for a Job</h3>
+          <h3 style={{ fontSize: 18, fontWeight: 700 }}>🎻 Tailor for a Job</h3>
           <button onClick={onClose} style={{
             background: 'none', border: 'none', color: 'var(--text3)',
             fontSize: 20, cursor: 'pointer', padding: 4
-          }}>Γ£ò</button>
+          }}>✖</button>
         </div>
 
         <div style={{ padding: 24, overflowY: 'auto', flex: 1 }}>
@@ -1405,7 +1405,7 @@ function TailorModal({ onClose, onSubmit, loading, tailorResult }) {
                   <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                     <Spinner size={16} color="#fff" /> Analyzing match...
                   </span>
-                ) : 'Analyze Match ΓåÆ'}
+                ) : 'Analyze Match →'}
               </button>
             </>
           ) : (
@@ -1417,9 +1417,9 @@ function TailorModal({ onClose, onSubmit, loading, tailorResult }) {
   );
 }
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    RESPONSIVE CSS (injected as a string)
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 const RESPONSIVE_CSS = `
 @media (max-width: 768px) {
   .analysis-grid { grid-template-columns: 1fr !important; }
@@ -1430,9 +1430,9 @@ const RESPONSIVE_CSS = `
 }
 `;
 
-/* ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+/* ─────────────────────────────────────────────
    MAIN APP
-ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+───────────────────────────────────────────── */
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('upload');
   const [resumeText, setResumeText] = useState('');
