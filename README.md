@@ -1,4 +1,4 @@
-```markdown
+
 # AI Resume Screening & Parsing Engine 🚀
 
 An advanced, AI-powered web application designed to automate resume screening, parse unstructured data, and evaluate candidate profiles against job descriptions using state-of-the-art Large Language Models (LLMs). Built with an optimized backend and ultra-fast inference APIs, this tool streamlines the hiring workflow by providing semantic analysis and contextual scoring.
@@ -25,20 +25,18 @@ An advanced, AI-powered web application designed to automate resume screening, p
 
 The application follows a decoupled, asynchronous-ready architecture to process resume data efficiently:
 
-
 ```
-
-[User Interface / Postman]
-│
-▼ (Multipart Form Data: Resume + JD)
-[Flask Backend API]
-│
-├─► [NLP Text Extraction Pipeline] ──► Cleaned Text
-│
-▼ (Structured Prompt Construction)
+[User Interface / Postman] 
+       │
+       ▼ (Multipart Form Data: Resume + JD)
+[Flask Backend API] 
+       │
+       ├─► [NLP Text Extraction Pipeline] ──► Cleaned Text
+       │
+       ▼ (Structured Prompt Construction)
 [Groq API Gateway] ──► [Llama Inference Engine]
-│
-▼ (JSON Response Generation)
+       │
+       ▼ (JSON Response Generation)
 [Score & Feedback Delivery Engine]
 
 ```
@@ -65,11 +63,12 @@ The application follows a decoupled, asynchronous-ready architecture to process 
 ### Installation & Setup
 
 1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/yourusername/ai-resume-checker.git](https://github.com/yourusername/ai-resume-checker.git)
-   cd ai-resume-checker
+```bash
+git clone https://github.com/yourusername/ai-resume-checker.git
+cd ai-resume-checker
 
 ```
+
 
 2. **Create and activate a virtual environment:**
 ```bash
@@ -154,7 +153,3 @@ Processes a resume against a provided job description.
 * [ ] Implement batch resume processing utilizing an asynchronous task queue (Celery/Redis).
 * [ ] Containerize the full stack using Docker for seamless multi-environment deployment.
 * [x] Deploy live via AWS infrastructure.
-
-```
-
-```
