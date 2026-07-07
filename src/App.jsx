@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 /* ─────────────────────────────────────────────
-   GLOBAL STYLES (injected via <style>)
+    GLOBAL STYLES (injected via <style>)
 ───────────────────────────────────────────── */
 const GLOBAL_CSS = `
 :root {
@@ -66,11 +66,7 @@ html, body, #root {
 `;
 
 /* ─────────────────────────────────────────────
-   API KEY INPUT PROMPT COMPONENT
-───────────────────────────────────────────── */
-
-/* ─────────────────────────────────────────────
-   PROMPTS
+    PROMPTS
 ───────────────────────────────────────────── */
 const SYSTEM_PROMPT = (resumeText) => `You are an expert AI Resume & Interview Coach with 15+ years of experience in talent acquisition, career coaching, and technical hiring at top-tier companies including FAANG, startups, and consulting firms.
 
@@ -217,24 +213,20 @@ COVER LETTER HOOK:
 /* ─────────────────────────────────────────────
    PARSING HELPERS
 ───────────────────────────────────────────── */
-// Strip all markdown formatting (bold, headers, etc.) for reliable parsing
 function stripMarkdown(text) {
   return text
-    .replace(/\*{1,3}/g, '')       // ***bold/italic***
-    .replace(/#{1,6}\s*/g, '')     // ## headers
-    .replace(/`/g, '')             // code backticks
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'); // [links](url)
+    .replace(/\*{1,3}/g, '')       
+    .replace(/#{1,6}\s*/g, '')     
+    .replace(/`/g, '')             
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'); 
 }
 
 function parseScore(text) {
   const clean = stripMarkdown(text);
-  // Try "SCORE: 6/10" pattern first
   const m1 = clean.match(/SCORE:\s*(\d+)\s*\/\s*10/i);
   if (m1) return parseInt(m1[1]);
-  // Try "SCORE: 6 out of 10"
   const m2 = clean.match(/SCORE:\s*(\d+)\s*out\s*of\s*10/i);
   if (m2) return parseInt(m2[1]);
-  // Fallback: find any X/10 in the first 500 chars
   const m3 = clean.slice(0, 500).match(/(\d+)\s*\/\s*10/);
   if (m3) return parseInt(m3[1]);
   return null;
@@ -507,7 +499,6 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
       padding: '80px 20px 40px', animation: 'fadeUp 0.5s ease'
     }}>
       <div style={{ maxWidth: 560, width: '100%', textAlign: 'center' }}>
-        {/* Decorative glow */}
         <div style={{
           width: 120, height: 120, borderRadius: '50%', margin: '0 auto 32px',
           background: 'radial-gradient(circle, rgba(124,106,247,0.25) 0%, transparent 70%)',
@@ -529,8 +520,8 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
           Upload your resume. Get brutally honest feedback, interview prep, and a rewrite — powered by AI.
         </p>
 
-        {/* API Key Input */}
-        <div style={{ marginBottom: 24 }}>
+        {/* Dynamic API Key Input Box Wrapper */}
+        <div style={{ marginBottom: 24, textAlign: 'left' }}>
           <div style={{
             display: 'flex', alignItems: 'center', gap: 8,
             background: 'var(--bg2)', border: '1px solid var(--border)',
@@ -542,7 +533,14 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
               type="password"
               placeholder="Enter your Groq API key"
               value={apiKey}
-              onChange={e => setApiKey(e.target.value)}
+              onChange={e => {
+                const currentKey = e.target.value.trim();
+                setApiKey(currentKey);
+                // Dynamically commit valid token strings right into client memory
+                if (currentKey.startsWith('gsk_')) {
+                  localStorage.setItem('groq_api_key', currentKey);
+                }
+              }}
               style={{
                 flex: 1, background: 'transparent', border: 'none',
                 color: 'var(--text)', padding: '14px 0', fontSize: 14,
@@ -550,8 +548,8 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
               }}
             />
           </div>
-          <p style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6, textAlign: 'left' }}>
-            Free key from <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>console.groq.com/keys</a> · Never stored on any server.
+          <p style={{ fontSize: 11, color: 'var(--text3)', marginTop: 6 }}>
+            Don't have an API Key? <a href="https://console.groq.com/keys" target="_blank" rel="noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', fontWeight: '500' }}>Click here to grab your free Groq Key ↗</a> · Saved locally in your browser workspace.
           </p>
         </div>
 
@@ -616,7 +614,6 @@ function UploadScreen({ onAnalyze, loading, resumeText, setResumeText, fileName,
             border: 'none', borderRadius: 'var(--radius)',
             fontSize: 16, fontWeight: 700, cursor: (!resumeText || !apiKey) ? 'not-allowed' : 'pointer',
             transition: 'all 0.3s ease', fontFamily: 'inherit',
-            transform: loading ? 'none' : undefined,
             opacity: loading ? 0.7 : 1,
             boxShadow: (resumeText && apiKey) ? '0 4px 24px rgba(124,106,247,0.3)' : 'none'
           }}
@@ -1312,7 +1309,6 @@ function TailorModal({ onClose, onSubmit, loading, tailorResult }) {
     setSubmitted(true);
   };
 
-  // Parse tailor result sections
   const formatTailorResult = (text) => {
     if (!text) return null;
     const matchScore = text.match(/MATCH SCORE:\s*(\d+)%/i);
@@ -1437,7 +1433,12 @@ export default function App() {
   const [currentScreen, setCurrentScreen] = useState('upload');
   const [resumeText, setResumeText] = useState('');
   const [fileName, setFileName] = useState('');
-  const [apiKey, setApiKey] = useState('');
+  
+  // Initialize from client memory safely on app initialization
+  const [apiKey, setApiKey] = useState(() => {
+    return localStorage.getItem('groq_api_key') || '';
+  });
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -1474,6 +1475,7 @@ export default function App() {
   };
 
   const handleGenQuestions = async (role) => {
+    if (!apiKey) return;
     setLoadingQ(true); setError('');
     try {
       const result = await callAI(apiKey, sys, [{ role: 'user', content: QUESTIONS_PROMPT(role) }]);
@@ -1492,6 +1494,7 @@ export default function App() {
   };
 
   const handleImprove = async () => {
+    if (!apiKey) return;
     setLoadingImp(true); setError('');
     try {
       const result = await callAI(apiKey, sys, [{ role: 'user', content: IMPROVE_PROMPT }]);
@@ -1505,6 +1508,7 @@ export default function App() {
   };
 
   const handleTailor = async (jd) => {
+    if (!apiKey) return;
     setLoadingTailor(true); setError('');
     try {
       const result = await callAI(apiKey, sys, [{ role: 'user', content: TAILOR_PROMPT(jd) }]);
@@ -1591,7 +1595,7 @@ export default function App() {
           textAlign: 'center', padding: '24px 20px 32px',
           fontSize: 13, color: 'var(--text3)'
         }}>
-          Built by <a href="https://github.com/ayush201456" target="_blank" rel="noreferrer" style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'none' }}>Ayush Gupta</a>
+          Built by <a href="https://github.com/ayushxdev01" target="_blank" rel="noreferrer" style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'none' }}>Ayush Gupta</a>
         </footer>
       )}
     </>
