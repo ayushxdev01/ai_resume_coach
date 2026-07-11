@@ -1,18 +1,18 @@
 <div align="center">
 
-# 🚀 AI Resume Checker
-
-**AI-Powered Resume Screening & Parsing Engine**
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=220&section=header&text=AI%20Resume%20Checker&fontSize=55&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI-Powered%20Resume%20Screening%20%26%20Parsing%20Engine&descAlignY=58&descSize=18" width="100%"/>
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1000&color=2563EB&center=true&vCenter=true&width=600&lines=Semantic+Resume+Parsing;Contextual+JD+Matching;Groq-Powered+Ultra-Fast+Inference;AI-Driven+Scoring+%2B+Feedback" alt="Typing SVG" width="600" />
 
-<br>
+<br><br>
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-Backend-000000?logo=flask&logoColor=white)
 ![Groq](https://img.shields.io/badge/Groq-Llama%20Inference-F55036)
 ![AWS](https://img.shields.io/badge/AWS-Deployed-FF9900?logo=amazonaws&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
+<br>
 
 **[🚀 Live Demo](https://d88rdyziae9iu.cloudfront.net/)** &nbsp;•&nbsp;
 [Features](#-key-features) &nbsp;•&nbsp; [Architecture](#️-system-architecture) &nbsp;•&nbsp; [Tech Stack](#️-tech-stack--tools) &nbsp;•&nbsp; [API](#-api-endpoints-core-backend) &nbsp;•&nbsp; [Setup](#-getting-started)
