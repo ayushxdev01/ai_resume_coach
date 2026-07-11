@@ -1,22 +1,33 @@
 <div align="center">
 
-![header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=180&section=header&text=AI%20Resume%20Screener&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Semantic%20Resume%20Parsing%20%2B%20LLM-Powered%20Candidate%20Scoring&descAlignY=58&descSize=17)
+# 🚀 AI Resume Checker
 
-<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1000&color=F97316&center=true&vCenter=true&width=650&lines=Semantic+Resume+%2B+JD+Matching;Groq-Powered+Sub-Second+Inference;Structured+JSON+Scoring+%26+Feedback;Deterministic+Prompt+Engineering" alt="Typing SVG" />
+**AI-Powered Resume Screening & Parsing Engine**
 
-<br><br>
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1000&color=2563EB&center=true&vCenter=true&width=600&lines=Semantic+Resume+Parsing;Contextual+JD+Matching;Groq-Powered+Ultra-Fast+Inference;AI-Driven+Scoring+%2B+Feedback" alt="Typing SVG" width="600" />
+
+<br>
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-Backend-000000?logo=flask&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-Llama%20Inference-F97316)
+![Groq](https://img.shields.io/badge/Groq-Llama%20Inference-F55036)
 ![AWS](https://img.shields.io/badge/AWS-Deployed-FF9900?logo=amazonaws&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-![Last Commit](https://img.shields.io/github/last-commit/yourusername/ai-resume-checker?color=F97316)
-![Stars](https://img.shields.io/github/stars/yourusername/ai-resume-checker?style=social)
-
 **[🚀 Live Demo](https://d88rdyziae9iu.cloudfront.net/)** &nbsp;•&nbsp;
-[Features](#-key-features) &nbsp;•&nbsp; [Architecture](#️-system-architecture) &nbsp;•&nbsp; [Tech Stack](#️-tech-stack--tools) &nbsp;•&nbsp; [Setup](#-getting-started) &nbsp;•&nbsp; [API](#-api-endpoints-core-backend) &nbsp;•&nbsp; [Roadmap](#-future-roadmap)
+[Features](#-key-features) &nbsp;•&nbsp; [Architecture](#️-system-architecture) &nbsp;•&nbsp; [Tech Stack](#️-tech-stack--tools) &nbsp;•&nbsp; [API](#-api-endpoints-core-backend) &nbsp;•&nbsp; [Setup](#-getting-started)
+
+</div>
+
+---
+
+## 📸 Demo
+
+<div align="center">
+
+![AI Resume Checker Screenshot](Demo.png)
+
+**[🚀 Try it live →](https://d88rdyziae9iu.cloudfront.net/)**
 
 </div>
 
@@ -26,34 +37,30 @@
 
 | | |
 |---|---|
-| 📄 **Semantic resume parsing** | Extracts structured details from unstructured PDF/Word resumes using NLP |
+| 📄 **Semantic resume parsing** | Extracts structured details from unstructured PDF/Word resumes using advanced NLP techniques |
 | 🎯 **Contextual JD matching** | Goes beyond keyword matching — analyzes actual depth of experience and skills against a specific job description |
-| 🤖 **AI-driven scoring & feedback** | Llama models generate a compatibility score plus actionable feedback for the candidate |
-| ⚡ **Ultra-fast inference** | Groq API integration for sub-second text processing and analysis generation |
-| 🔌 **Developer-friendly API** | Clean, modular Flask backend, ready for integration with any frontend dashboard |
+| 🤖 **AI-driven scoring & feedback** | Uses Llama models to generate a compatibility score and actionable feedback |
+| ⚡ **Ultra-fast inference** | Groq API integration for lightning-fast text processing and analysis generation |
+| 🔌 **Developer-friendly API** | Clean, modular Flask backend, ready for integration with frontend dashboards |
 
 ---
 
 ## 🏗️ System Architecture
 
-<div align="center">
-
 ```
- [User Interface / Postman]
-            │
-            ▼  Multipart Form Data: Resume + JD
- [Flask Backend API]
-            │
-            ├──►  NLP Text Extraction Pipeline  ──►  Cleaned Text
-            │
-            ▼  Structured Prompt Construction
- [Groq API Gateway]  ──►  [Llama Inference Engine]
-            │
-            ▼  JSON Response Generation
- [Score & Feedback Delivery Engine]
+[User Interface / Postman]
+       │
+       ▼ (Multipart Form Data: Resume + JD)
+[Flask Backend API]
+       │
+       ├─► [NLP Text Extraction Pipeline] ──► Cleaned Text
+       │
+       ▼ (Structured Prompt Construction)
+[Groq API Gateway] ──► [Llama Inference Engine]
+       │
+       ▼ (JSON Response Generation)
+[Score & Feedback Delivery Engine]
 ```
-
-</div>
 
 ---
 
@@ -61,17 +68,17 @@
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=python,flask,aws,git,vscode,postman" alt="Tech Stack Icons" />
+<img src="https://skillicons.dev/icons?i=python,flask,aws,vscode,git,postman" alt="Tech Stack Icons" />
 
 </div>
 
 | Layer | Tech |
 |---|---|
 | Backend Framework | Python, Flask |
-| AI & Inference | Groq API (Llama models) |
+| AI & Inference | Groq API (Llama Models) |
 | Text Processing | NLP techniques, PyPDF2 / pdfplumber |
-| Environment & Tools | VS Code, Git, Postman (API testing) |
-| Deployment | AWS (EC2 / Elastic Beanstalk), CloudFront |
+| Environment & Tools | VS Code, Git, Postman |
+| Deployment | AWS (EC2 / Elastic Beanstalk) |
 
 ---
 
@@ -86,7 +93,7 @@
 
 </details>
 
-<details open>
+<details>
 <summary><b>🔽 Installation & Setup</b></summary>
 <br>
 
@@ -99,10 +106,8 @@ cd ai-resume-checker
 **2. Create and activate a virtual environment**
 ```bash
 python -m venv venv
-
 # On Windows:
 venv\Scripts\activate
-
 # On macOS/Linux:
 source venv/bin/activate
 ```
@@ -138,14 +143,10 @@ The backend API will be live at `http://127.0.0.1:5000/`.
 
 Processes a resume against a provided job description.
 
-**Content-Type:** `multipart/form-data`
-
-**Request Body:**
-
-| Field | Type | Description |
-|---|---|---|
-| `resume` | File | `.pdf` or `.docx` format |
-| `job_description` | Text | The text of the target role requirement |
+- **Content-Type:** `multipart/form-data`
+- **Request Body:**
+  - `resume`: (File) `.pdf` or `.docx` format
+  - `job_description`: (Text) the text of the target role requirement
 
 <details>
 <summary><b>🔽 Example Response</b></summary>
@@ -156,13 +157,8 @@ Processes a resume against a provided job description.
   "status": "success",
   "data": {
     "match_score": "84%",
-    "key_alignments": [
-      "Proficient in Python backend development",
-      "Strong understanding of NLP architecture"
-    ],
-    "skill_gaps": [
-      "Missing explicit Docker/Containerization experience"
-    ],
+    "key_alignments": ["Proficient in Python backend development", "Strong understanding of NLP architecture"],
+    "skill_gaps": ["Missing explicit Docker/Containerization experience"],
     "verdict": "Highly Recommended for Interview Stage"
   }
 }
@@ -174,9 +170,9 @@ Processes a resume against a provided job description.
 
 ## 📐 Engineering Highlights & Optimizations
 
-- ⚡ **Sub-second AI inference** — swapped standard LLM APIs for the **Groq API engine**, slashing token generation latency for near-instant evaluation
-- 🎯 **Prompt engineering** — deterministic, JSON-structured prompt template enforces consistent parsing and eliminates LLM hallucination in scoring
-- 🧹 **Text normalization** — regex-based NLP pipeline strips noise, headers, and invalid encodings from PDF streams before tokenization, cutting token costs by **~25%**
+- **Sub-second AI inference** — swapped standard LLM APIs for the Groq API engine, slashing token generation latency for near-instant evaluation
+- **Prompt engineering** — deterministic JSON-structured prompt template enforces consistent parsing and eliminates LLM hallucination in scoring
+- **Text normalization** — regex-based NLP pipelines strip noise, headers, and invalid encodings from PDF streams before tokenization, cutting token costs by ~25%
 
 ---
 
@@ -191,6 +187,13 @@ Processes a resume against a provided job description.
 
 <div align="center">
 
-![footer](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=100&section=footer)
+## 👤 Developed by
+
+**[Ayush Gupta](https://github.com/ayushxdev01)**
+
+[![GitHub](https://img.shields.io/badge/GitHub-ayushxdev01-181717?logo=github&logoColor=white)](https://github.com/ayushxdev01)
+
+---
+<sub>Built with ❤️ using Python, Flask & Groq</sub>
 
 </div>
