@@ -1,6 +1,6 @@
 <div align="center">
 
-![header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=180&section=header&text=AI%20Resume%20Checker&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI-Powered%20Resume%20Screening%20%26%20Parsing%20Engine&descAlignY=58&descSize=18)
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=AI%20Resume%20Checker&fontSize=60&animation=fadeIn&fontAlignY=38&desc=AI-Powered%20Resume%20Screening%20%26%20Parsing%20Engine&descAlignY=51&descAlign=62)
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1000&color=2563EB&center=true&vCenter=true&width=600&lines=Semantic+Resume+Parsing;Contextual+JD+Matching;Groq-Powered+Ultra-Fast+Inference;AI-Driven+Scoring+%2B+Feedback" alt="Typing SVG" />
 
@@ -22,9 +22,10 @@
 ## 📸 Demo
 
 <div align="center">
-<i>Add a screenshot or GIF of the app in action here.</i>
 
-<!-- ![Demo](docs/demo.gif) -->
+![AI Resume Checker Screenshot](docs/demo.png)
+
+**[🚀 Try it live →](https://d88rdyziae9iu.cloudfront.net/)**
 
 </div>
 
@@ -190,6 +191,6 @@ Processes a resume against a provided job description.
 
 [![GitHub](https://img.shields.io/badge/GitHub-ayushxdev01-181717?logo=github&logoColor=white)](https://github.com/ayushxdev01)
 
-![footer](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=100&section=footer)
+![footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=100&section=footer)
 
 </div>
