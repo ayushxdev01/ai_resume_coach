@@ -22,9 +22,8 @@
 ## 📸 Demo
 
 <div align="center">
-<i>Add a screenshot or GIF of the app in action here.</i>
 
-<!-- ![Demo](docs/demo.gif) -->
+![AI Resume Checker Screenshot](Demo.png)
 
 </div>
 
